@@ -1,11 +1,11 @@
 /**
  CHANGE THIS ONE 
  **/
-var gifLengths = [6];
+var gifLengths = [4.5, 5, 5, 5, 5, 5];
 
 
 
-var gifStep = 0, isFinished = false, totalScroll;
+var isFinished = false, totalScroll;
 
 
 
@@ -17,21 +17,46 @@ function boot(){
 
 	setTimeout(() => {
 		isFinished = true;
-		gifStep++;
-	}, gifLengths[gifStep]*1000);
+		document.getElementById("AnimationWrapper").children[0].children[1].style.opacity = "0";
+	}, gifLengths[0]*1000);
 
-	document.getElementById("MainWrapper").addEventListener('scroll', (e) => {
-		console.log(document.getElementById("MainWrapper").scrollTop, parseInt(window.innerHeight)*gifStep);
-		if(isFinished){
-			if(document.getElementById("MainWrapper").scrollTop >= parseInt(window.innerHeight)*gifStep){
-				isFinished = false;
-			}
+	setTimeout(() => {
+		isFinished = true;
+	}, gifLengths[0]*1000);
+
+	document.getElementById("MainWrapper").addEventListener('mousedown', (e) => {
+		if(isFinished == true){
+			document.getElementById("MainWrapper").scrollTop = window.innerHeight;
+			isFinished = false;
 			setTimeout(() => {
-				isFinished = true;
-				gifStep++;
-			}, gifLengths[gifStep]*1000);
-		} else{
-			document.getElementById("MainWrapper").scrollTop = parseInt(window.innerHeight)*gifStep;
+				document.getElementById("AnimationWrapper").children[1].children[5].style.opacity = "0";
+			}, gifLengths[2]*1000);
 		}
 	});
+
+	document.getElementById("MainWrapper").addEventListener('scroll', (e) => {
+		e.preventDefault();
+	});
+
+	document.getElementById("ChoiceOne").onmousedown = (e) => {
+		document.getElementById("AnimationWrapper").children[1].children[1].src = "images/b-pill.gif";
+		document.getElementById("AnimationWrapper").children[1].children[2].style.opacity = "0";
+		document.getElementById("AnimationWrapper").children[1].children[3].style.opacity = "0";
+		document.getElementById("AnimationWrapper").children[1].children[4].style.opacity = "0";
+		setTimeout(() => {
+			e.target.parentNode.children[0].style.opacity = "0";
+		}, gifLengths[4]*1000);
+	}
+
+	document.getElementById("ChoiceTwo").onmousedown = (e) => {
+		document.getElementById("AnimationWrapper").children[1].children[1].src = "images/y-pill.gif";
+		document.getElementById("AnimationWrapper").children[1].children[2].style.opacity = "0";
+		document.getElementById("AnimationWrapper").children[1].children[3].style.opacity = "0";
+		document.getElementById("AnimationWrapper").children[1].children[4].style.opacity = "0";
+		setTimeout(() => {
+			document.getElementById("AnimationWrapper").children[1].children[1].style.opacity = "0";
+		}, gifLengths[4]*1000);
+	}
+
 }
+
