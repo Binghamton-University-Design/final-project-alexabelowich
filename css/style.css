@@ -102,7 +102,7 @@ body{
 }
 
 
-<div class="split left">
+<div class="split top">
   <div class="centered">
     <img src="images/y-pill.gif" alt="y-pill">
     <h2>Jane Flex</h2>
@@ -110,7 +110,7 @@ body{
   </div>
 </div>
 
-<div class="split right">
+<div class="split bottom">
   <div class="centered">
     <img src="images/b-pill.gif" alt="b-pill">
     <h2>John Doe</h2>
