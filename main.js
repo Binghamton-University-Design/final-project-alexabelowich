@@ -1,7 +1,7 @@
 /**
  CHANGE THIS ONE 
  **/
-var gifLengths = [4.5, 5, 5, 5, 5, 5];
+var gifLengths = [4.5, 5, 5, 5, 25, 25];
 
 
 
